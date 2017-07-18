@@ -1,0 +1,85 @@
+@mixin other($prefix) {
+  .#{$prefix}clearfix\:remove {
+    &::after,
+    &::before {
+      content: none !important;
+    }
+  }
+
+  @each $value in (hidden, visible, collapse) {
+    .#{$prefix}visibility\:#{$value} {
+      visibility: $value;
+    }
+  }
+
+  @each $value in (auto, hidden, overlay, scroll, visible) {
+    .#{$prefix}overflow\:#{$value} {
+      overflow: $value;
+    }
+
+    @each $direction in (x, y) {
+      .#{$prefix}overflow-#{$direction}\:#{$value} {
+        overflow-#{$direction}: $value;
+      }
+    }
+  }
+
+  @each $value in (normal, nowrap, pre, pre-line, pre-wrap) {
+    .#{$prefix}white-space\:#{$value} {
+      white-space: $value;
+    }
+  }
+
+  @each $value in (pointer) {
+    .#{$prefix}cursor\:#{$value} {
+      cursor: $value;
+    }
+  }
+
+  @each $prop in (margin, padding) {
+    @each $direction in (top, right, bottom, left) {
+      @each $value in (10, 20, 30, 40, 50, 60) {
+        .#{$prefix}#{$prop}-#{$direction}\:#{$value} {
+          #{$prop}-#{$direction}: #{$value}px;
+        }
+      }
+    }
+  }
+
+  .#{$prefix}min-width\:0 {
+    min-width: 0;
+  }
+  .#{$prefix}min-height\:0 {
+    min-height: 0;
+  }
+
+  .#{$prefix}overflow\:auto {
+    overflow: auto;
+  }
+
+  .#{$prefix}height\:100 {
+    height: 100% !important;
+  }
+
+  .#{$prefix}width\:100 {
+    width: 100% !important;
+  }
+
+  @each $value in (left, right, center, justify, justify-all) {
+    .#{$prefix}text-align\:#{$value} {
+      text-align: $value;
+    }
+  }
+}
+
+@each $prefix, $min-width, $max-width in $screens {
+  $query: if(
+    $max-width != 0,
+    "(min-width: $min-width) and (max-width: $max-width)",
+    "(min-width: $min-width)"
+  );
+
+  @media #{$query} {
+    @include other($prefix);
+  }
+}

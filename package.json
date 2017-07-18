@@ -1,0 +1,19 @@
+{
+  "name": "@thecotne/sass-helpers",
+  "scripts": {
+    "build": "node-sass src/main.scss dist/main.css"
+  },
+  "main": "dist/main.css",
+  "repository": "git@github.com:thecotne/sass-helpers.git",
+  "author": "cotne nazarashvili <cotne.95@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "mol-conventional-changelog": "^1.2.0",
+    "node-sass": "^4.5.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/mol-conventional-changelog"
+    }
+  }
+}

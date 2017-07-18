@@ -1,0 +1,54 @@
+@mixin flex($prefix) {
+  .#{$prefix}flex {
+    display: flex !important;
+
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+
+  .#{$prefix}flex-grow {
+    flex-grow: 1;
+  }
+
+  .#{$prefix}flex-basis {
+    flex-basis: 100%;
+  }
+
+  @each $value in (flex-start, flex-end, center, space-around, space-between) {
+    .#{$prefix}justify-content\:#{$value} {
+      justify-content: $value;
+    }
+  }
+
+  @each $value in (baseline, center, flex-end, flex-start, stretch) {
+    .#{$prefix}align-items\:#{$value} {
+      align-items: $value;
+    }
+  }
+
+  @each $value in (row, row-reverse, column, column-reverse) {
+    .#{$prefix}flex-direction\:#{$value} {
+      flex-direction: $value;
+    }
+  }
+
+  @each $value in (nowrap, wrap, wrap-reverse) {
+    .#{$prefix}flex-wrap\:#{$value} {
+      flex-wrap: $value;
+    }
+  }
+}
+
+@each $prefix, $min-width, $max-width in $screens {
+  $query: if(
+    $max-width != 0,
+    "(min-width: $min-width) and (max-width: $max-width)",
+    "(min-width: $min-width)"
+  );
+
+  @media #{$query} {
+    @include flex($prefix);
+  }
+}

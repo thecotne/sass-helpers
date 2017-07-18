@@ -1,0 +1,15 @@
+$screens:
+  ""           0               0,
+  "\\/xs\\@"   0               $screen-xs-max,
+  "\\/sm\\@"   0               $screen-sm-max,
+  "\\/md\\@"   0               $screen-md-max,
+
+  "sm\\@"      $screen-sm-min  0,
+  "sm\\/sm\\@" $screen-sm-min  $screen-sm-max,
+  "sm\\/md\\@" $screen-sm-min  $screen-md-max,
+
+  "md\\@"      $screen-md-min  0,
+  "md\\/md\\@" $screen-md-min  $screen-md-max,
+
+  "lg\\@"      $screen-lg-min  0
+;
