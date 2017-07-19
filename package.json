@@ -1,5 +1,9 @@
 {
   "name": "@thecotne/sass-helpers",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "node-sass src/main.scss dist/main.css",
     "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post"
